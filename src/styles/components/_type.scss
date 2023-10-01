@@ -1,10 +1,14 @@
-body {
-  font-family: sans-serif;
+html,body {
+  font-family: Monument;
   font-size: $size-text;
-  line-height: 1.5;
   color: $c-text;
+  background-color: $c-bg;
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
 }
 
-.title {
-  color: $c-alt;
+h1, h2, h3, h4, h5, h6{
+  margin: 0;
+  
 }
