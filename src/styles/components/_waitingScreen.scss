@@ -11,6 +11,7 @@
         justify-content: center;
         align-items: center;
         width: 70%;
+        height: auto;
         background-color: $c-alt;
         border:solid 36px black;
         border-radius: 48px;
@@ -34,9 +35,22 @@
         position: absolute;
         transform-origin: 0 100%;
         left: 50%;
-        top: 1350px;
+        top: 1420px;
         scale: 2.5;
         z-index: 0;
+        padding: 15px; 
+
+        & path{
+            scale: .9;
+            transform: translateX(10px);
+
+            //PathLength : 692.4334106445312
+        }
+
+        &:last-of-type path{
+            stroke-dasharray: 692.4334106445312;
+            stroke-dashoffset: -692.4334106445312;
+        }
     }
 
     &__button{

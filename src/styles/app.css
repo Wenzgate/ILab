@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&display=swap");
 @font-face {
   font-family: "NeueBit";
@@ -42,6 +43,70 @@
     background-position: 100% -100%;
   }
 }
+@keyframes pressedButton {
+  0% {
+    transform: translateY(0);
+    box-shadow: 0 52px 0 0 #23144D;
+  }
+  100% {
+    transform: translateY(52px);
+    box-shadow: 0 0px 0 0 #23144D;
+  }
+}
+@keyframes fillingSVG {
+  0% {
+    stroke-dashoffset: -692.4334106445;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes fillingScreen {
+  0% {
+    height: var(--new-height);
+    width: var(--new-width);
+  }
+  100% {
+    width: 100%;
+    height: 100%;
+    top: -32px;
+    left: -32px;
+  }
+}
+@keyframes opacity {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.isClick {
+  animation: pressedButton 100ms ease-in-out;
+}
+
+.fillingSVG {
+  animation: fillingSVG 1.5s cubic-bezier(0.1, 0.68, 1, 0.52) forwards;
+}
+
+.fillingScreen {
+  animation: fillingScreen 0.4s ease-out forwards;
+  position: absolute; /* Fixez la position pour qu'elle couvre tout l'écran */
+  top: var(--new-top);
+  left: var(--new-left);
+  height: var(--new-height);
+  width: var(--new-width);
+  z-index: 999;
+  background-color: rgba(0, 0, 0, 0.605);
+  border: solid 36px black;
+  border-radius: 48px;
+  z-index: 1;
+}
+
+.opacity {
+  animation: opacity 0.3s ease-in-out forwards;
+}
+
 html, body {
   font-family: Monument;
   font-size: 18px;
@@ -69,6 +134,7 @@ h1, h2, h3, h4, h5, h6 {
   justify-content: center;
   align-items: center;
   width: 70%;
+  height: auto;
   background-color: #0C0C0C;
   border: solid 36px black;
   border-radius: 48px;
@@ -88,9 +154,18 @@ h1, h2, h3, h4, h5, h6 {
   position: absolute;
   transform-origin: 0 100%;
   left: 50%;
-  top: 1350px;
+  top: 1420px;
   scale: 2.5;
   z-index: 0;
+  padding: 15px;
+}
+.sectionWS__svg path {
+  scale: 0.9;
+  transform: translateX(10px);
+}
+.sectionWS__svg:last-of-type path {
+  stroke-dasharray: 692.4334106445;
+  stroke-dashoffset: -692.4334106445;
 }
 .sectionWS__button {
   width: calc(70% + 36px);

@@ -23,6 +23,18 @@
         <h2 class="wrapperWS__subTitle">projects</h2>
       </div>
       <svg class="sectionWS__svg" width="466" height="232" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M354.5 10c39.667-4.167 102 19.5 102 82.5 0 89-69.5 127.5-320.5 74.5C24 150.2 5.333 202 10 230" stroke="#0D0D0D" stroke-width="18"/></svg>
+      <svg class="sectionWS__svg" width="466" height="232" fill="none" xmlns="http://www.w3.org/2000/svg"><defs>
+        <!-- Define a filter with a Gaussian blur effect -->
+        <filter id="glow">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+          <!-- Adjust the stdDeviation value for the blur intensity -->
+          <feMerge>
+            <feMergeNode in="blur" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
+      </defs><path d="M354.5 10c39.667-4.167 102 19.5 102 82.5 0 89-69.5 127.5-320.5 74.5C24 150.2 5.333 202 10 230" filter="url(#glow)" stroke="#472F8C" stroke-width="18"/></svg>
+
       <button class="sectionWS__button">découvrir</button>
     </section>
   </main>
