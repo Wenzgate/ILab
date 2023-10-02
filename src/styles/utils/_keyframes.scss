@@ -54,12 +54,12 @@
 }
 
 .fillingSVG{
-    animation: fillingSVG 1.5s cubic-bezier(.1,.68,1,.52) forwards;
+    animation: fillingSVG 1s cubic-bezier(.1,.68,1,.52) forwards;
 
 }
 
 .fillingScreen{
-    animation: fillingScreen .4s ease-out forwards;
+    animation: fillingScreen .4s cubic-bezier(.14,1.06,.85,.74) forwards;
     position: absolute; /* Fixez la position pour qu'elle couvre tout l'écran */
     top: var(--new-top);
     left: var(--new-left);

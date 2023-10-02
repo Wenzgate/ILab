@@ -86,11 +86,11 @@
 }
 
 .fillingSVG {
-  animation: fillingSVG 1.5s cubic-bezier(0.1, 0.68, 1, 0.52) forwards;
+  animation: fillingSVG 1s cubic-bezier(0.1, 0.68, 1, 0.52) forwards;
 }
 
 .fillingScreen {
-  animation: fillingScreen 0.4s ease-out forwards;
+  animation: fillingScreen 0.4s cubic-bezier(0.14, 1.06, 0.85, 0.74) forwards;
   position: absolute; /* Fixez la position pour qu'elle couvre tout l'écran */
   top: var(--new-top);
   left: var(--new-left);
@@ -180,6 +180,32 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: 200px;
   border-radius: 48px;
   z-index: 2;
+}
+
+.sectionLoading {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  z-index: 3;
+}
+.sectionLoading__svg {
+  position: fixed;
+  width: 358px;
+  height: 358px;
+  scale: 2.5;
+}
+.sectionLoading__svg circle {
+  transform: translate(29px, -29px) rotate(-90deg);
+  transform-origin: center center;
+  stroke-dasharray: 942.096862793;
+  stroke-dashoffset: 942.096862793;
+}
+.sectionLoading__img {
+  position: fixed;
+  width: auto;
+  scale: 2;
+  background-size: cover;
 }
 
 main {
