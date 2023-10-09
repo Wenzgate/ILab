@@ -1,131 +1,149 @@
 "use strict";
 
-//import des modules
-import {gsap} from "gsap";
-import CustomEase from "gsap/CustomEase";
-
-// Utilisez GSAP avec CustomEase pour créer vos animations
-gsap.registerPlugin(CustomEase);
-
-
-console.log(gsap.version);
-
-
-//Variables
-const discoverButton = document.querySelector('.sectionWS__button');
-const fillingSVG = document.querySelector('.sectionWS__svg:last-of-type path');
-const wrapperWS = document.querySelector('.sectionWS__wrapper');
-const sectionWS = document.querySelector('.sectionWS');
-const sectionP = document.querySelector('.sectionProjects');
-const sectionLoading = document.querySelector('.sectionLoading');
-const loadingImg = document.querySelector('.sectionLoading__img img');
-const loadingSvg = document.querySelector('.sectionLoading__svg circle');
-
-const url = 'pages/projects.html'; // Remplacez par l'URL de votre page 1
-
-const imageUrls = [
-    'assets/images/picto_anim2d.svg',
-    'assets/images/picto_anim3d.svg',
-    'assets/images/picto_vfx.svg',
-    'assets/images/picto_ir.svg',
-    'assets/images/picto_cg.svg',
-    'assets/images/picto_jv.svg'
-];
-
-
-
-//Fonction du click du bouton 'discover'
-discoverButton.addEventListener('click', () =>{
-    clickDiscoverButton();
-    // loadPage(url);
-    
-});
-
-//Fonction général lors du click du bouyton 'discover'
-function clickDiscoverButton  () {
-    discoverButton.classList.add('isClick');
-    fillingSVG.classList.add('fillingSVG');
-    loading();
-    
-}
-
-// Fonction pour agrandir le conteuneur central
-function screenFilling (e) {
-    const topPosition = e.offsetTop;
-    const leftPosition = e.offsetLeft;
-    const heightValue = e.offsetHeight;
-    const widthValue = e.offsetWidth;
-    const nouvelElement = document.createElement('div');
-
-
-    nouvelElement.style.setProperty('--new-height', heightValue - 72 + 'px');
-    nouvelElement.style.setProperty('--new-width', widthValue - 72 + 'px');
-    nouvelElement.style.setProperty('--new-top', topPosition  + 'px');
-    nouvelElement.style.setProperty('--new-left', leftPosition  + 'px');
-
-    sectionWS.appendChild(nouvelElement);
-    nouvelElement.classList.add('fillingScreen');
-
-    wrapperWS.classList.add('opacity');
-    discoverButton.classList.add('opacity');
-    document.querySelectorAll('.sectionWS svg').forEach(function (e) {
-        e.classList.add('opacity');
+fetch('projets.json')
+    .then((response) => {
+        if (!response.ok) {
+            throw new Error('Impossible de charger le fichier JSON');
+        }
+        return response.json();
     })
+    .then((data) => {
+        // Le contenu du fichier JSON est maintenant dans la variable "data"
+        // Vous pouvez le traiter comme un objet JavaScript
+        const projets = data;
 
-    nouvelElement.addEventListener('animationend',() => {
-        sectionLoading.style.display = 'flex'
-        const imageInterval = setInterval(changeImage, interval);
-        fillLoading();
+        const sectionProjetTitle = document.querySelector('.sectionProjet__title');
+
+        // Sélectionnez les liens de filtre
+        const filtreOptions = document.querySelectorAll('.sectionProjet__filterBar a');
+
+        // Sélectionnez la grille de projets
+        const projetGrid = document.getElementById('projetGrid');
+
+        // Écoutez les clics sur les liens de filtre
+        // Écoutez les clics sur les liens de filtre
+        filtreOptions.forEach((option) => {
+            option.addEventListener('click', (e) => {
+                e.preventDefault();
+                filtreOptions.forEach((opt) => {
+                    opt.classList.remove('active');
+                });
+
+                // Ajoutez la classe "active" à l'option sélectionnée
+                option.classList.add('active');
+
+                // Récupérez l'option sélectionnée
+                const selectedOption = option.getAttribute('data-option');
+                console.log(selectedOption);
+
+
+                // Masquez les éléments de la grille en ajustant l'opacité
+                const gridItems = projetGrid.querySelectorAll('a');
+                gridItems.forEach((item) => {
+                    item.style.opacity = 0; // Opacité à 0 pour masquer les éléments
+                });
+
+                // Filtrer les projets en fonction de l'option sélectionnée
+                const projetsFiltres = projets.filter((projet) => projet.option === selectedOption);
+
+                // Générez le HTML des projets filtrés
+                const titlePage = projetsFiltres.length > 0 ? projetsFiltres[0].optionTitle : '';
+
+                
+                sectionProjetTitle.innerHTML = titlePage;
+
+                // Générez le HTML des projets filtrés
+                const projetHTML = projetsFiltres.map((projet) => {
+                    return `
+                        <a href="details.php?id=${projet.id}" style="background-image: url('${projet.image}');">
+                            <p>${projet.nom}<img src="${projet.picto}" alt="${projet.nom}"></p>
+                        </a>
+                    `;
+                }).join('');
+
+
+                // Attendez un court délai avant de réafficher les éléments de la grille avec l'opacité
+                setTimeout(() => {
+                    // Réaffichez les éléments de la grille avec l'opacité
+
+
+                    // Remplacez le contenu de la grille avec les projets filtrés
+                    projetGrid.innerHTML = projetHTML;
+
+                }, 300);
+
+                setTimeout(() => {
+                    // Réaffichez les éléments de la grille avec l'opacité
+
+
+                    // Remplacez le contenu de la grille avec les projets filtrés
+                    const gridItems = projetGrid.querySelectorAll('a');
+                    gridItems.forEach((item) => {
+                        item.classList.add('active') // Opacité à 0 pour masquer les éléments
+                    });
+                }, 400);
+                // 300 millisecondes (0.3 secondes) correspondant à la durée de votre transition d'opacité
+            });
+        });
+
+
+    })
+    .catch((error) => {
+        console.error(error);
     });
 
-};
 
-// Fonction pour charger le contenu de la page 'project' en utilisant AJAX
-function loadPage(url) {
-    fetch(url)
-        .then(response => response.text())
-        .then(data => {
-            sectionP.innerHTML = data;
-        })
-        .catch(error => console.error(error));
-
-        window.history.pushState({}, '', url);
-}
-
-//Fonction boucle image de la sectionLoading
-let currentIndex = 0;
-let interval = 300
-let imageInterval
-
-function changeImage() {
-    if (currentIndex < imageUrls.length) {
-        loadingImg.src = imageUrls[currentIndex];
-        currentIndex++;
-    } else {
-        // Toutes les images ont été affichées, donc nous annulons l'intervalle
-        clearInterval(imageInterval);
-    }
-}
-
-//Fonction chargement du cercle de chargment
-CustomEase.create("custom", "M0,0 C0.487,0 0.227,0.625 0.488,0.778 0.56,0.82 0.888,1 1,1 ")
-CustomEase.create("custom2", "M0,0 C0.021,0.065 0.254,0.008 0.258,0.098 0.284,0.728 0.17,1 1,1 ")
-
-let loadingDuration = (interval * (imageUrls.length + 1))/1000 
-function fillLoading(){
-    gsap.to(loadingSvg,{duration:loadingDuration,strokeDashoffset:0,ease: "custom",onComplete:function(){
-        gsap.to(sectionLoading,{duration:3,top:'-100%',ease: "custom2",opacity:0 });
-    }
-    })
-}
-
-//Fonction générale du loading
-function loading(){
-    setTimeout(function(){
-        screenFilling(wrapperWS);
-    }, 1000);
+    document.addEventListener('DOMContentLoaded', function () {
+        const allElements = document.querySelectorAll('.sectionProjet__filterBar a');
     
-}
-
-
-
+        allElements.forEach((element, index) => {
+            element.addEventListener('click', function (event) {
+                event.preventDefault(); // Empêche le comportement par défaut du lien
+    
+                // Supprimez toutes les classes actives sur les éléments
+                allElements.forEach(el => el.classList.remove('active'));
+    
+                // Ajoutez la classe active à l'élément cliqué
+                element.classList.add('active');
+    
+                // Supprimez toutes les classes spéciales sur les éléments
+                allElements.forEach(el => {
+                    el.classList.remove('class1', 'class2', 'class3', 'class4');
+                });
+    
+                // Ajoutez des classes spéciales aux éléments en fonction de l'élément actif
+                if (index === 0) {
+                    allElements[1].classList.add('class1');
+                    allElements[6].classList.add('class2');
+                } else if (index === 1) {
+                    allElements[0].classList.add('class3');
+                    allElements[2].classList.add('class1');
+                    allElements[6].classList.add('class2');
+                } else if (index === 2) {
+                    allElements[0].classList.add('class1');
+                    allElements[1].classList.add('class2');
+                    allElements[3].classList.add('class1');
+                    allElements[6].classList.add('class2');
+                } else if (index === 3) {
+                    allElements[0].classList.add('class1');
+                    allElements[2].classList.add('class2');
+                    allElements[4].classList.add('class1');
+                    allElements[6].classList.add('class2');
+                } else if (index === 4) {
+                    allElements[0].classList.add('class1');
+                    allElements[3].classList.add('class2');
+                    allElements[5].classList.add('class1');
+                    allElements[6].classList.add('class2');
+                } else if (index === 5) {
+                    allElements[0].classList.add('class1');
+                    allElements[4].classList.add('class2');
+                    allElements[6].classList.add('class3');
+                } else if (index === 6) {
+                    allElements[0].classList.add('class1');
+                    allElements[5].classList.add('class2');
+                }
+            });
+        });
+    });
+    
+    

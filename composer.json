@@ -1,0 +1,18 @@
+{
+    "name": "corne/ilab",
+    "description": "ILab project",
+    "autoload": {
+        "psr-4": {
+            "Corne\\Ilab\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Wenzgate",
+            "email": "cornelis.m@outlook.com"
+        }
+    ],
+    "require": {
+        "twig/twig": "^3.7"
+    }
+}

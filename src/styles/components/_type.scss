@@ -2,13 +2,21 @@ html,body {
   font-family: Monument;
   font-size: $size-text;
   color: $c-text;
-  background-color: $c-bg;
+  background-color: $c-bg-d;
   margin: 0;
   width: 100vw;
   height: 100vh;
+  overflow: hidden;
+  top: 0;
+  left: 0;
 }
 
 h1, h2, h3, h4, h5, h6{
   margin: 0;
   
+}
+
+a{
+  color: snow;
+  text-decoration: none;
 }
