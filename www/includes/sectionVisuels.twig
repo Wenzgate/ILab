@@ -1,0 +1,9 @@
+<section id="section4" class="section-visuels">
+            
+    {% for image in data.imageGallery %}
+    <div class="image-item">
+        <img src="{{ image }}" alt="Projet {{ loop.index }}">
+    </div>
+    {% endfor %}
+    
+</section>

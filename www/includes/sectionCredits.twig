@@ -1,0 +1,18 @@
+<section id="section5" class="section-credit">
+            <h3>Crédits</h3>
+            <div class="wrapperCredits">
+                <div class="wrapperCredits__card">
+                    <div class="wrapperData">
+                        <img src="{{data.photo}}" alt="">
+                    
+                        <div class="gridData">
+                            {% for text in data.cardTab %} 
+                                <span>{{text}}</span>
+                            {% endfor %}
+                        </div>
+                        </div>
+                </div>
+                <img class="wrapperCredits__qr" src="{{data.qr}}"/>
+            </div>
+
+        </section>

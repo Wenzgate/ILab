@@ -1,0 +1,16 @@
+<section id="section3" class="section-description">
+    <p id="large">{{data.textTab[0]}}</p>
+    <div class="section-description__grid">
+        <div class="section-description__column"> 
+        {% for text in data.textTab|slice(1 , 2) %} 
+            <p>{{text}}</p>
+        {% endfor %}
+        </div>
+        <div class="section-description__column"> 
+        {% for text in data.textTab|slice(3, 2) %} 
+            <p>{{text}}</p>
+        {% endfor %}
+        </div>
+        
+    </div>
+</section>

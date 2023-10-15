@@ -1,0 +1,39 @@
+.sectionLoading{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    z-index: 3;
+
+    &__svg{
+        position: fixed;
+        width: 358px;
+        height: 358px;
+        scale: 2.5;
+
+        & circle{
+            transform: translate(29px, -29px) rotate(-90deg);
+            transform-origin: center center;
+            //totalLength:942.0968627929688
+            stroke-dasharray: 942.0968627929688;
+            stroke-dashoffset: 942.0968627929688;
+
+        }
+    }
+}
+
+.wrapperCanvas{
+    width: 50vmin;
+    height: 50vmin;
+    
+    
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    
+    canvas{
+        width: 100% !important;
+        height: 100% !important;
+    }
+}

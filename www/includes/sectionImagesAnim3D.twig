@@ -1,0 +1,13 @@
+<section id="section2" class="section-images3D">
+    <div class="wrapperImages">
+            
+        {% for image in data.imageGallery %}
+            
+                <img class="wrapperImages__item" src="{{ image }}" alt="Image">
+            
+        {% endfor %}
+    </div>
+
+    <img class="section-images__poster" src="{{data.affiche}}" >
+    
+</section>

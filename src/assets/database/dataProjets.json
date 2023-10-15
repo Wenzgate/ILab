@@ -1,0 +1,45 @@
+[
+    {
+        "id": 1,
+        "mainCreator": "Antoine Lemineur",
+        "photo": "assets/images/photo.svg",
+        "qr": "assets/images/qr.svg",
+        "nom": "un eldorado",
+        "date": "Octobre, 03 2024",
+        "image": "assets/images/1.jpg",
+        "affiche": "assets/images/affiche.jpg",
+        "weburl": "https://mika-cornelis.be/",
+        "imageGallery": ["assets/images/1.jpg", 
+                        "assets/images/1.jpg",
+                        "assets/images/1.jpg",
+                        "assets/images/affiche.jpg",
+                        "assets/images/affiche.jpg",
+                        "assets/images/landscape.jpg"],
+        "textTab": ["Michelin chefs would, of course, choose Rossini Caviar... Checkmate designed a developed a unified global brand website and B2C store in a scalable open-source solution.", 
+                    "Runestone is a graduation project we did for our last year in VFX School (Haute-Ecole Albert Jacquard) in Belgium.",
+                    "Runestone is about a magical world plunged into darkness and whose only way out is to acquire a lost rune stone to try to save the world. We follow the adventure of a magician who has received the call to perform this task.",
+                    "It was a great experience and we learned a huge amount of things during this work. As we were only 2, we did both the modelling, texturing, lighting, compositing etc but Martin Horé specialized in FX and I did the sculpting and animation.",
+                    "This project has been done in Blender using the Cycles render engine and the FX were done in Mantra, Houdini. Enjoy ! :)"
+                    ],
+        "cardTab": ["antoine lemineur", "24 ans", "B3F2", "visual effect", "2022-2023", "antoine.lemineur@gmail.com"],
+        "videoUrl" : "https://www.youtube.com/embed/JOiGEI9pQBs",
+        "option": "option1",
+        "optionName": "ANIM2D",
+        "optionPicto": "assets/images/picto_anim2d.svg"
+    },
+    {
+        "id": 1,
+        "nom": "Projet 1 Anim3D",
+        "option": "option2"
+    },
+    {
+        "id": 2,
+        "nom": "Projet 1 Anim2D 2",
+        "option": "option1"
+    },
+    {
+        "id": 2,
+        "nom": "Projet 1 Anim3D 2",
+        "option": "option2"
+    }
+]

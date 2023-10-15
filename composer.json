@@ -1,0 +1,12 @@
+{
+    "name": "corne/ilab-workflow",
+    "description": "ILab",
+    "autoload": {
+        "psr-4": {
+            "Corne\\IlabWorkflow\\": "src/"
+        }
+    },
+    "require": {
+        "twig/twig": "^3.7"
+    }
+}

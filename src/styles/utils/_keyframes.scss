@@ -1,0 +1,78 @@
+@keyframes translateBackground {
+    0% {
+        background-position: 0% 0%;
+    }
+    100% {
+        background-position: 1920px -1080px ;
+    }
+}
+
+@keyframes pressedButton {
+    0% {
+        transform: translateY(0);
+        box-shadow: 0 52px 0 0 #23144D;
+    }
+    100% {
+        transform: translateY(52px);
+        box-shadow: 0 0px 0 0 #23144D;
+    }
+}
+
+@keyframes fillingSVG {
+    0% {
+        stroke-dashoffset: -692.4334106445312;
+    }
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes fillingScreen {
+    0% {
+        height: var(--new-height);
+        width: var(--new-width);
+    }
+    100% {
+        width: 100%;
+        height: 100%;
+        top: -32px;
+        left: -32px;
+    }
+}
+
+@keyframes opacity {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.isClick{
+    animation: pressedButton 100ms ease-in-out;
+}
+
+.fillingSVG{
+    animation: fillingSVG 1s cubic-bezier(.1,.68,1,.52) forwards;
+
+}
+
+.fillingScreen{
+    animation: fillingScreen .4s cubic-bezier(.14,1.06,.85,.74) forwards;
+    position: absolute; /* Fixez la position pour qu'elle couvre tout l'écran */
+    top: var(--new-top);
+    left: var(--new-left);
+    height: var(--new-height);
+    width: var(--new-width);
+    z-index: 999;
+    background-color: rgba(0, 0, 0, 0.605);
+    border:solid 36px black;
+    border-radius: 48px;
+    z-index: 1;
+}
+
+.opacity{
+    animation: opacity .3s ease-in-out forwards;
+
+}

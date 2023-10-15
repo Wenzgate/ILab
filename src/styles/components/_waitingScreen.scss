@@ -1,0 +1,71 @@
+.sectionWS{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    & .wrapperWS{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 70%;
+        height: auto;
+        background-color: $c-alt;
+        border:solid 36px black;
+        border-radius: 48px;
+        font-family: NeueBit;
+        text-transform: uppercase;
+        line-height: .7;
+        z-index: 2;
+
+
+        &__title{
+            font-size: 850px;
+        }
+
+        &__subTitle{
+            font-size: 400px;
+            margin-bottom: 100px;
+        }
+    }
+
+    &__svg{
+        position: absolute;
+        transform-origin: 0 100%;
+        left: 50%;
+        top: 1420px;
+        scale: 2.5;
+        z-index: 0;
+        padding: 15px; 
+
+        & path{
+            scale: .9;
+            transform: translateX(10px);
+
+            //PathLength : 692.4334106445312
+        }
+
+        &:last-of-type path{
+            stroke-dasharray: 692.4334106445312;
+            stroke-dashoffset: -692.4334106445312;
+        }
+    }
+
+    &__button{
+        width: calc(70% + 36px);
+        color: $c-text;
+        font-size: 100px;
+        font-family: $family-text-body;
+        font-weight: bold;
+        background-color: $c-bg-l;
+        box-shadow: 0 52px 0 0 $c-bg-d;
+        border: none;
+        padding: 32px 0 32px 0;
+        margin-top:200px ;
+        border-radius: 48px;
+        z-index: 2;
+
+    }
+}
